@@ -1,7 +1,17 @@
-import type { LoaderFunction } from "@vercel/remix"
+import { json, type LoaderFunction } from "@vercel/remix"
+import { Card, CardDescription, CardHeader, CardTitle } from "~/components/ui/card"
+import { db } from "~/lib/db.server"
 
-const ROOT_URL_REDIRECT = "https://my-redirect-url.com"
+export const loader: LoaderFunction = async () => {
+  // const myModels = await db.modelname.findMany()
+  return json({ success: true })
+}
 
-export const loader: LoaderFunction = () => {
-  return new Response(null, { status: 302, headers: { "Location": ROOT_URL_REDIRECT } })
+export default function Index() {
+  return <Card>
+    <CardHeader>
+      <CardTitle>Component Test</CardTitle>
+      <CardDescription>Testing description</CardDescription>
+    </CardHeader>
+  </Card>
 }
