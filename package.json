@@ -8,8 +8,9 @@
     "deploy": "vercel --prod",
     "dev": "remix dev --manual",
     "start": "remix-serve ./build/index.js",
+    "migrate": "npx prisma migrate dev",
     "typecheck": "tsc",
-    "postinstall": "npx prisma generate --accelerate && npx prisma migrate"
+    "postinstall": "npx prisma generate --accelerate && npx prisma migrate deploy"
   },
   "dependencies": {
     "@prisma/client": "^5.3.1",
