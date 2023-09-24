@@ -29,9 +29,9 @@ export default function App() {
       <body>
         <div className="p-4 mx-0 lg:mx-auto max-w-full lg:max-w-screen-lg">
           <h1 className="mb-10">
-            <a href="/home" className="flex flex-col items-center">
-              <img src="/logo.png" width="160" className="mb-2" />
-              <span className="text-center inline-blockr">a Gods Unchained podcast</span>
+            <a href="/" className="flex flex-col items-center">
+              <h1 className="text-xl">Logo here</h1>
+              <span className="text-center inline-blockr">Subtitle here</span>
             </a>
           </h1>
 
