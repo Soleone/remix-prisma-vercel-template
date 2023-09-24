@@ -20,6 +20,10 @@ Requirements: Have Postgres installed
 4. `npm install` will also run Prisma migrations and create client which is meant for the production environment, it's fine if this fails locally.
 5. `npm run dev` starts your app in development mode, rebuilding assets on file changes.
 
+### Troubleshooting
+
+* If locally Prisma is complaining that it needs a prisma:// URL then you need to run `npx prisma generate` to ensure it's not using the accelerated client locally
+
 ## Deployment
 
 1. Run `vercel` to link a new or existing Vercel project and create the .vercel directory.
