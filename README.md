@@ -14,16 +14,16 @@ Comes with:
 
 Requirements: Have Postgres installed
 
-1. Rename `.env.example` to `.env` and adjust your local database URL
-2. `npm install`
-3. `npx prisma generate` for local non-accelerate client
-4. Edit `schema.prisma` to create a basic table
-5. `npm install` can be run again to run Prisma migrations
-6. `npm run dev` starts your app in development mode, rebuilding assets on file changes.
+1. Rename `.env.example` to `.env` and adjust your local database URL.
+2. Edit `schema.prisma` to create a basic table.
+3. `npm run migrate` to create new migrations file.
+4. `npm install` will also run Prisma migrations and create client which is meant for the production environment, it's fine if this fails locally.
+5. `npm run dev` starts your app in development mode, rebuilding assets on file changes.
 
 ## Deployment
 
 1. Run `vercel` to link a new or existing Vercel project and create the .vercel directory.
 2. Create new Prisma Accelerate project to get DATABASE_URL - [link](https://www.prisma.io/docs/data-platform/accelerate/getting-started)
-3. Configure DATABASE_URL in Vercel project settings environment variables
-4. `vercel --prod` to deploy
+3. In Vercel project settings environment variables configure DATABASE_URL to full prisma schema from Prisma Accelerate.
+4. Also configure DIRECT_DATABASE_URL to direct postgresql URL for running migrations during deploy.
+5. `npm run deploy` to deploy to Vercel which will run migrations there via postinstall from package.json.
