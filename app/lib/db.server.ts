@@ -1,23 +1,16 @@
 import { PrismaClient } from '@prisma/client'
-// import { PrismaClient } from '@prisma/client/edge'
+// import { PrismaClient } from '@prisma/client/edge' // Use for edge functions
 import { withAccelerate } from '@prisma/extension-accelerate';
 
-
-let db: any // TODO: Utilize PrismaClient with accelerate
-
-declare global {
-  var __db: PrismaClient | undefined
+function makePrisma() {
+  return new PrismaClient().$extends(withAccelerate())
 }
 
-if (process.env.NODE_ENV === 'production') {
-  db = new PrismaClient().$extends(withAccelerate())
-  db.$connect()
-} else {
-  if (!global.__db) {
-    global.__db = new PrismaClient()
-    global.__db.$connect()
-  }
-  db = global.__db
-}
+const globalForPrisma = global as unknown as {
+  prisma: ReturnType<typeof makePrisma>
+};
 
-export { db }
+export const db = globalForPrisma.prisma ?? makePrisma()
+
+if (process.env.NODE_ENV !== "production")
+  globalForPrisma.prisma = makePrisma()
