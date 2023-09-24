@@ -12,11 +12,14 @@ Comes with:
 
 ## Development
 
-1. Rename `.env.example` to `.env` and paste your local database URL
+Requirements: Have Postgres installed
+
+1. Rename `.env.example` to `.env` and adjust your local database URL
 2. `npm install`
-3. Edit `schema.prisma` to create a basic table
-4. `npm install` can be run again to run Prisma migrations
-5. `npm run dev` starts your app in development mode, rebuilding assets on file changes.
+3. `npx prisma generate` for local non-accelerate client
+4. Edit `schema.prisma` to create a basic table
+5. `npm install` can be run again to run Prisma migrations
+6. `npm run dev` starts your app in development mode, rebuilding assets on file changes.
 
 ## Deployment
 
